@@ -5,37 +5,43 @@ body {
 #container {
     justify-items: center;
     margin: 0px auto;
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     display: grid;
     max-width: 400px;
     min-height: 500px;
     border-radius: 25px;
     grid-template-columns: repeat(4, 1fr);
-    background-color: black;
+    background-color: #1C1C1C;
 }
 
 #display {
-    width: 95%;
+    width: 90%;
     height: 70px;
     border-radius: 25px;
-    background-color: black;
-    font-size: 50px;
+    background-color: #1C1C1C;
+    font-size: 60px;
     color: white;
     grid-column: 1 / span 4;
     text-align: right;
+    margin-top: 75px;
+    margin-bottom: 10px;
+    padding: 0px 10px 0px 10px;
 }
 
 
-#clear {
+.topRowKeys {
     background-color: #D4D4D2;
-    height: 60px;
-    border-radius: 10px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
     border: none;
     font-size: 25px;
-    color: black;
-    width: 385px;
-    margin: 10px;
-    grid-column: 1 / span 4;
+    color: #1C1C1C;
+    margin: 5px;
+}
+
+.topRowKeys:focus {
+    background-color: #ffffff77;
 }
 
 .numberKeys {
@@ -49,8 +55,17 @@ body {
     color: white;
 }
 
+.numberKeys:focus {
+    background-color: #ffffff77;
+}
+
+.operatorKeys:focus {
+    background-color: white;
+    color: #FF9500;
+}
+
 .operatorKeys {
-    font-size: 25px;
+    font-size: 30px;
     border-radius: 50%;
     width: 90px;
     height: 90px;
@@ -58,4 +73,12 @@ body {
     border: none;
     background-color: #FF9500;
     color: white;
+}
+
+#zero {
+    width: 200px;
+    border-radius: 85px;
+    text-align: left;
+    padding-left: 45px;
+    grid-column: 1 / span 2;
 }

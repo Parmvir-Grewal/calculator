@@ -2,15 +2,15 @@ let value = [];
 let operator ="";
 
 function add(n, n1) {
-    return (n + n1).toFixed(12).replace(/\.?0+$/, "");
+    return (n + n1).toFixed(10).replace(/\.?0+$/, "");
 }
 
 function subtract(n, n1) {
-    return (n - n1).toFixed(12).replace(/\.?0+$/, "");
+    return (n - n1).toFixed(10).replace(/\.?0+$/, "");
 }
 
 function multiply(n, n1) {
-    return (n * n1).toFixed(12).replace(/\.?0+$/, "");
+    return (n * n1).toFixed(10).replace(/\.?0+$/, "");
 }
 
 function divide(n, n1) {
@@ -18,7 +18,7 @@ function divide(n, n1) {
         return "Error";
     }
     else{
-        return (n / n1).toFixed(12).replace(/\.?0+$/, "");
+        return (n / n1).toFixed(10).replace(/\.?0+$/, "");
     }
 }
 
@@ -41,26 +41,67 @@ function operate(operator, n, n1) {
 
 const numberKeys = document.querySelectorAll(".numberKeys");
 const operatorKeys = document.querySelectorAll(".operatorKeys");
+const topRowKeys = document.querySelectorAll(".topRowKeys");
 operatorKeys.forEach(opkey => opkey.addEventListener('click', displayChange));
 numberKeys.forEach(key => key.addEventListener('click', displayChange));
+topRowKeys.forEach(key => key.addEventListener('click', displayChange));
 
-const clear = document.querySelector("#clear");
-clear.addEventListener('click', displayChange)
 
 function displayChange() {
     const display = document.querySelector("#display");
+    const clear = document.querySelector("#clear");
     if (this.value != "clear") {
+        clear.innerHTML = "C";
         if (this.value === "+" || this.value === "-" || this.value === "/" || this.value === "*") {
-            value.push(this.value);
+            value[1] = this.value;
         }
         else if (value.length == 1) {
-            value[0] += this.value;
-            display.innerHTML = value[0];
+            if (this.value === "."){
+                if (value[0].includes(".")) {
+                    display.innerHTML = value[0];
+                }
+                else {
+                    value[0] += this.value;
+                    display.innerHTML = value[0];
+                }
+            }
+            else if (this.value === "plusMinus"){ 
+                value[0] = -value[0];
+                display.innerHTML = value[0];   
+            }
+            else if (this.value === "percent"){  
+                value[0] = (value[0]/100).toFixed(10).replace(/\.?0+$/, "");
+                display.innerHTML = value[0]; 
+            }
+            else{
+                value[0] += this.value;
+                display.innerHTML = value[0];
+            }
+           
 
         }
         else if (value.length == 3) {
-            value[2] += this.value;
-            display.innerHTML = value[2];
+            if (this.value === "."){
+                if (value[2].includes(".")) {
+                    display.innerHTML = value[2];
+                }
+                else {
+                    value[2] += this.value;
+                    display.innerHTML = value[2];
+                }
+            }
+            else if (this.value === "plusMinus"){ 
+                value[2] = -value[2];
+                display.innerHTML = value[2];   
+            }
+            else if (this.value === "percent"){  
+                value[2] = (value[2]/100).toFixed(10).replace(/\.?0+$/, "");
+                display.innerHTML = value[2]; 
+            }
+            else{
+                value[2] += this.value;
+                display.innerHTML = value[2];
+            }
         }
         else {
             value.push(this.value);
@@ -74,6 +115,7 @@ function displayChange() {
         
     }
     if (this.value == "clear") {
+        clear.innerHTML = "AC";
         value = [];
         display.innerHTML = "";
     }

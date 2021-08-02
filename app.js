@@ -2,15 +2,15 @@ let value = [];
 let operator ="";
 
 function add(n, n1) {
-    return n + n1;
+    return (n + n1).toFixed(12).replace(/\.?0+$/, "");
 }
 
 function subtract(n, n1) {
-    return n - n1;
+    return (n - n1).toFixed(12).replace(/\.?0+$/, "");
 }
 
 function multiply(n, n1) {
-    return n * n1;
+    return (n * n1).toFixed(12).replace(/\.?0+$/, "");
 }
 
 function divide(n, n1) {
@@ -18,7 +18,7 @@ function divide(n, n1) {
         return "Error";
     }
     else{
-        return n / n1;
+        return (n / n1).toFixed(12).replace(/\.?0+$/, "");
     }
 }
 

@@ -122,7 +122,7 @@ function displayChange() {
     if (this.value == "clear") {
         clear.innerHTML = "AC";
         value = [];
-        display.innerHTML = "";
+        display.innerHTML = "0";
     }
     if (value.length > 2 && (this.value === "+" || this.value === "-" || this.value === "/" || this.value === "*")) {
         value = [operate(value[1], parseFloat(value[0]), parseFloat(value[2])), this.value];

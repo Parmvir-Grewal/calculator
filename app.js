@@ -53,7 +53,12 @@ function displayChange() {
     if (this.value != "clear") {
         clear.innerHTML = "C";
         if (this.value === "+" || this.value === "-" || this.value === "/" || this.value === "*") {
-            value[1] = this.value;
+            if (this.value === value[1]) {
+                value[1] = this.value;
+            } 
+            else {
+                value.push(this.value);
+            }
         }
         else if (value.length == 1) {
             if (this.value === "."){
